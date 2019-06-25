@@ -69,4 +69,44 @@ function printC() {
         console.log(str)
     } 
 }
-printC()
+// printC()
+ 
+ // 7、将一个正整数分解质因数。例如：输入90，打印出90=2*3*3*5
+ function primeFactorization(a) {
+     const num = a
+     if(a == 1) {
+         console.log('1没有质因数')
+        return
+     }
+     let arr =[]
+     for (let i = 2;i<=a;i++) {
+        if (a%i == 0) {
+            a/=i
+            arr.push(i)
+            i = 2
+        }
+     }
+     if(arr.length>1) {
+        console.log(`${num} = ${arr.join('*')}`)
+     } else {
+         console.log('输入了一个质数，无法分解质因数')
+     }
+ }
+//  primeFactorization(13)
+// 8、输出9*9口诀
+function multiplication() {
+    for (let i=1;i<10;i++) {
+        let str = ''
+        for (let j=i;j<10;j++) {
+            str += `${i}*${j} = ${i*j}  `
+        }
+        console.log(str)
+    }
+}
+// multiplication()
+// 10、有一对兔子，从出生后第3个月过后每个月都生一对兔子，小兔子长到第三个月之后每个月又生一对兔子，假如兔子都不死，问每个月的兔子总数是多少？
+// function rabbit(month) {
+//     let couples = Math.pow(2,Math.floor(month/3))
+//     console.log(`第${month}月时兔子的数量是${couples*2}`)
+// }
+// rabbit(12)
