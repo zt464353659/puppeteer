@@ -1,15 +1,28 @@
 {
-  "name": "server",
+  "name": "koa-demo",
   "version": "1.0.0",
-  "description": "koa server",
-  "main": "demo-01.js",
+  "description": "NODE,KOA",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "zt464353659@126.com"
+  },
+  "keywords": [
+    "koa-test"
+  ],
+  "author": "zhatian",
   "license": "ISC",
   "dependencies": {
+    "fs": "0.0.1-security",
+    "fs.promised": "^3.0.0",
     "koa": "^2.7.0",
-    "koa-route": "^3.2.0"
+    "koa-body": "^4.1.0",
+    "koa-compose": "^4.1.0",
+    "koa-route": "^3.2.0",
+    "koa-static": "^5.0.0",
+    "path": "^0.12.7"
   }
 }
