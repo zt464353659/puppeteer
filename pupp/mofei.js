@@ -15,7 +15,7 @@ const mf = async () => {
   // 打开baidu
   await page.goto("http://www.baidu.com");
   // 输入墨菲定律
-  await page.type("#kw", "墨菲定律");
+  await page.type("#kw", "墨菲定律");    
   // 点击百度一下
   await page.click("#su");
   // 等待搜索内容出现，标签渲染完成
