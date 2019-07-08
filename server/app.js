@@ -2,6 +2,7 @@ const koa = require('koa')
 const koaBody = require('koa-body')
 const cors = require('koa-cors')
 const compose = require('koa-compose')
+const session = require('koa-session')
 const route = require('koa-route')
 const fs = require('fs.promised')
 const app = new koa()
@@ -37,11 +38,29 @@ const index = async (ctx, next) => {
     msg: '获取列表成功'
   }
 }
+// koa-session配置
+const SESSIONCONFIG = {
+  key: 'koa:sess',
+  maxAge: 86400000, // cookie的有效期，默认是一天
+  overwrite: true,  // 是否可以覆盖，默认 true
+  httpOnly: true, // 是否可以通过JavaScript修改，设置为true更安全
+  signed: true, // cookie的安全性
+  rolling: false, // 涉及cookie有效期的更新策略
+  renew: false  // 涉及cookie有效期的更新策略
+}
+app.keys = ['some secret hurr']
+app.use(session(SESSIONCONFIG, app))
+const sessionTest = async (ctx, next) => {
+  let n = ctx.session.views || 0
+  ctx.session.views = ++n
+  ctx.body = n + 'views' + JSON.stringify(ctx.session)
+}
 app.use(cors())
 app.use(koaBody())
 app.use(route.get('/', main))
 app.use(route.post('/login', login))
 app.use(route.get('/index', index))
+app.use(route.get('/session', sessionTest))
 // app.use(cors())
 app.listen(3000, () => {
   console.log('server running ···')
